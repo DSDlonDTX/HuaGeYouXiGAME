@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>正方形测试</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff0000'/%3E%3C/svg%3E">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  .box {
+    /* 边长 37（含边框）；红色填充；描边颜色由 JS 持续循环；5pt 边框（1pt = 96/72 px，5pt ≈ 6.67px）；圆角 5px */
+    --side:37px;
+    width: var(--side);
+    height: var(--side);
+    box-sizing: border-box;
+    background: #ff0000;
+    border: 5pt solid #ffffff;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    // 描边色持续变化：HSL 色相 0→360 循环，纯色（非渐变）平滑过渡；填充保持红色
+    var box = document.querySelector('.box');
+    var hue = 0;
+    function tick() {
+      hue = (hue + 1) % 360;
+      box.style.borderColor = 'hsl(' + hue + ', 100%, 50%)';
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>

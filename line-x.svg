@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  粗线 + 大叉 图标（照 图示.png 的比例复刻）
+
+  · 粗线 = 一条横向贯穿的粗棒，高 16/64（原图 ≈25%）
+  · 大叉 = 圆头粗笔画，笔画宽 8/64（≈12.5%），跨度 36/64（≈56%）
+  · 叉压在线上处是【透明缝隙】——用 mask 挖出来，不是画白色描边，
+    所以放到任何背景（浅色工具栏 / 深色工具栏 / 透明 app 图标）都正确
+  · 颜色走 currentColor：内联使用时跟随 CSS color；当 <img src="..."> 用时默认渲染为黑
+
+  想调比例，只需改这几处：
+    粗线粗细 → <rect> 的 y / height（保持 y + height/2 = 32 即居中）
+    叉的粗细 → 两个 stroke-width（8 = 叉，12.8 = 挖缝用的，差值的 1/2 就是缝隙宽）
+    叉的大小 → 4 条 <line> 的坐标（保持关于 (32,32) 对称）
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="line-x-title">
+  <title id="line-x-title">粗线上打叉</title>
+
+  <defs>
+    <!-- 遮罩规则：白 = 保留，黑 = 挖掉。
+         这里用 12.8 的笔画去挖一个 8 宽的叉 → 叉两侧各留 2.4 的透明缝隙。 -->
+    <mask id="line-x-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect width="64" height="64" fill="#fff"/>
+      <g stroke="#000" stroke-width="12.8" stroke-linecap="round" fill="none">
+        <line x1="18" y1="18" x2="46" y2="46"/>
+        <line x1="46" y1="18" x2="18" y2="46"/>
+      </g>
+    </mask>
+  </defs>
+
+  <!-- ① 粗线：横向贯穿整幅，被遮罩挖出叉形缺口 -->
+  <rect x="0" y="24" width="64" height="16" fill="currentColor" mask="url(#line-x-gap)"/>
+
+  <!-- ② 大叉：压在粗线之上 -->
+  <g stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none">
+    <line x1="18" y1="18" x2="46" y2="46"/>
+    <line x1="46" y1="18" x2="18" y2="46"/>
+  </g>
+</svg>
