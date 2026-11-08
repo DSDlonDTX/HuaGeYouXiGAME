@@ -1,10 +1,10 @@
-# 画个游戏 · Huageyouxi
+# 画个游戏 · HuaGeYouXiGAME
 
 > **你画什么，它就能玩什么。** —— 一个画笔驱动的横版闯关游戏编辑器 + 运行时。
 
-[![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-100%25-ff6b9d)](https://github.com/DSDlonDTX/huageyouxi#-关于-vibe-coding)
+[![Vibe Coding](https://img.shields.io/badge/Vibe%20Coding-100%25-ff6b9d)](https://github.com/DSDlonDTX/HuaGeYouXiGAME#-关于-vibe-coding)
 [![Electron](https://img.shields.io/badge/Electron-33-47848F)](https://www.electronjs.org/)
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6)](https://github.com/DSDlonDTX/huageyouxi/releases)
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6)](https://github.com/DSDlonDTX/HuaGeYouXiGAME/releases)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
@@ -61,8 +61,8 @@
 
 ### 方式一：下载打包好的应用（推荐，无需配置环境）
 
-前往 **[Releases 页面](https://github.com/DSDlonDTX/huageyouxi/releases)** 下载最新的
-[`Huageyouxi-v1.0.7z`](https://github.com/DSDlonDTX/huageyouxi/releases/download/v1.0/Huageyouxi-v1.0.7z)（83.5 MB），
+前往 **[Releases 页面](https://github.com/DSDlonDTX/HuaGeYouXiGAME/releases)** 下载最新的
+[`Huageyouxi-v1.0.7z`](https://github.com/DSDlonDTX/HuaGeYouXiGAME/releases/download/v1.0/Huageyouxi-v1.0.7z)（83.5 MB），
 解压到**任意目录**（路径可以带中文和空格），双击 `HuageyouxiGame.exe` 即可运行。
 
 > 首次启动会自动导入随包内置的 35 关示例关卡，打开就能直接玩。
@@ -72,8 +72,8 @@
 需要 [Node.js](https://nodejs.org/) 18 或更高版本。
 
 ```bash
-git clone https://github.com/DSDlonDTX/huageyouxi.git
-cd huageyouxi
+git clone https://github.com/DSDlonDTX/HuaGeYouXiGAME.git
+cd HuaGeYouXiGAME
 npm install
 npm start
 ```
@@ -136,7 +136,7 @@ npm start
 ## 目录结构
 
 ```
-huageyouxi/
+HuaGeYouXiGAME/
 ├── index.html          # 编辑器 + 游戏全部 UI 与渲染逻辑（单文件承载）
 ├── main.js             # Electron 主进程：窗口、存档 IO、.hgyx 打包/解包、自检入口
 ├── preload.js          # 主进程 ↔ 渲染进程 IPC 桥
@@ -144,7 +144,8 @@ huageyouxi/
 ├── package.json
 ├── icon.ico            # 应用图标
 ├── 默认关.hgyx          # 内置示例关卡（35 关 / 167 瓦片）
-├── *.svg / *.png       # 图标与界面素材
+├── 终点.svg            # 终点标记（index.html 以 <img src> 实际加载，运行必需）
+├── *.png               # 界面素材（主菜单 / 弹窗 / 空底纹 / 应用图标源）
 ├── *.mp3 / *.ogg       # 背景音乐
 └── gameapp/            # 打包工具链
     ├── _build.mjs          # 打包脚本（staging → packager → 改名 → 清理 → 自检）
