@@ -42,6 +42,7 @@ testlevel.png
 # ---------- 误操作产生的空文件 / 临时文本 ----------
 from PIL import Image.py
 新建文本文档.txt
+run.ps1
 
 # ---------- 系统文件 ----------
 Thumbs.db

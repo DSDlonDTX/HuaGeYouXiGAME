@@ -64,7 +64,8 @@
 ### 方式一：下载打包好的应用（推荐，无需配置环境）
 
 前往 **[Releases 页面](https://github.com/DSDlonDTX/huageyouxi/releases)** 下载最新的
-`画个游戏v1.0.7z`，解压到**任意目录**（路径可以带中文和空格），双击 `HuageyouxiGame.exe` 即可运行。
+[`Huageyouxi-v1.0.7z`](https://github.com/DSDlonDTX/huageyouxi/releases/download/v1.0/Huageyouxi-v1.0.7z)（83.5 MB），
+解压到**任意目录**（路径可以带中文和空格），双击 `HuageyouxiGame.exe` 即可运行。
 
 > 首次启动会自动导入随包内置的 35 关示例关卡，打开就能直接玩。
 
